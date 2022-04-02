@@ -1,0 +1,16 @@
+LISTAR:	
+String query ="FROM Articulos";
+return entityManager.createQuery(query).getResultList();
+
+Insertar:
+    public void insert(Articulos articulo){
+        entityManager.merge(articulo);
+    }
+
+Eliminar:
+
+    public void delete(Long id) {
+        //Forma 1
+        Usuario user = entityManager.find(Usuario.class, id);
+        entityManager.remove(user);
+    }

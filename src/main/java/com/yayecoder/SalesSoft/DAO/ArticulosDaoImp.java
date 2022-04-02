@@ -1,2 +1,34 @@
-package com.yayecoder.SalesSoft.DAO;public class ArticulosDaoImp {
+package com.yayecoder.SalesSoft.DAO;
+
+import com.yayecoder.SalesSoft.Models.Articulos;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
+
+@Repository
+@Transactional
+public class ArticulosDaoImp implements ArticulosDao {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Override
+    public List<Articulos> getArticulos(){
+        String query ="FROM Articulos";
+        return entityManager.createQuery(query).getResultList();
+
+    }
+
+    public void insert(Articulos articulo){
+        entityManager.merge(articulo);
+    }
+
+    public void delete (Long id){
+        Articulos art = entityManager.find(Articulos.class, id);
+        entityManager.remove(art);
+    }
+
 }
