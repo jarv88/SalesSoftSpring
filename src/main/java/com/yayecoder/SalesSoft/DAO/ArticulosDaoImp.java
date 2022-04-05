@@ -23,12 +23,18 @@ public class ArticulosDaoImp implements ArticulosDao {
     }
 
     public void insert(Articulos articulo){
-        entityManager.merge(articulo);
+        entityManager.merge(articulo); //probar persist para nuevos insert y merge para updates
+
     }
 
     public void delete (Long id){
         Articulos art = entityManager.find(Articulos.class, id);
         entityManager.remove(art);
+    }
+
+    public void update (Articulos articulo){
+        //Articulos art = entityManager.find(Articulos.class, articulo.getId());
+        entityManager.merge(articulo);
     }
 
 }

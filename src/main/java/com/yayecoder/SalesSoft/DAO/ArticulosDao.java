@@ -9,6 +9,7 @@ public interface ArticulosDao {
     List<Articulos> getArticulos();
     void insert(Articulos articulo);
     void delete(Long id);
+    void update(Articulos articulo);
 
 
 }

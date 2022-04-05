@@ -32,5 +32,11 @@ public class ArticulosController {
         articulosDao.delete(id);
     }
 
+    @RequestMapping(value = "api/articulos/{id}", method = RequestMethod.PUT)
+    public void updateArticulo(@RequestBody Articulos art){
+
+        articulosDao.update(art);
+    }
+
 
 }
